@@ -1,0 +1,60 @@
+﻿@model IEnumerable<student.Models.qut_tbl>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="container">
+<div class="col-lg-10">
+    <h2>Fee</h2>
+
+    <p>
+        @Html.ActionLink("Deposite Fee", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+               <b>Roll No</b>
+            </th>
+            <th>
+              <b>Quater Fee</b>
+            </th>
+            <th>
+              <b>Received Fee</b>
+            </th>
+            <th>
+              <b>Data of Received</b>
+            </th>
+            <th>
+               <b>Course Name</b>
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.rollno)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.q_fee)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.rcvd)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.admission_tbl.course)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div></div>

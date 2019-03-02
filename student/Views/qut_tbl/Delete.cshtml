@@ -1,0 +1,58 @@
+﻿@model student.Models.qut_tbl
+
+@{
+    ViewBag.Title = "Delete";
+}
+<div class="container">
+<div class="col-lg-10">
+    <h2>Delete</h2>
+
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>qut_tbl</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.q_fee)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.q_fee)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.rcvd)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.rcvd)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.dor)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.dor)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.admission_tbl.course)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.admission_tbl.course)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div></div></div>

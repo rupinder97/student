@@ -1,0 +1,66 @@
+﻿@model student.Models.courses_tbl
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2> Course Details</h2>
+
+<div>
+   
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.admfee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.admfee)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fq_fee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fq_fee)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sq_fee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sq_fee)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tq_fee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tq_fee)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.frthq_fee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.frthq_fee)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.course }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

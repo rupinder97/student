@@ -1,0 +1,88 @@
+﻿@model student.Models.admission_tbl
+
+@{
+    ViewBag.Title = "Details";
+}
+<div class="container">
+    <div class="col-lg-12">
+        <h2>Admission Details</h2>
+
+        <div>
+
+           
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Id)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Id)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.fname)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.fname)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.contactno)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.contactno)
+                </dd>
+
+               
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.rcvd)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.rcvd)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.doa)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.doa)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.gender)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.gender)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.courses_tbl.course)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.courses_tbl.course)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.rollno }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </div>
+</div>

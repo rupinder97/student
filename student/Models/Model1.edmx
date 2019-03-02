@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="stud_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="admission_tbl">
+          <Key>
+            <PropertyRef Name="rollno" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rollno" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="course" Type="nvarchar" MaxLength="50" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="fname" Type="nvarchar" MaxLength="50" />
+          <Property Name="gender" Type="nvarchar" MaxLength="50" />
+          <Property Name="contactno" Type="nvarchar" MaxLength="50" />
+          <Property Name="admfee" Type="int" />
+          <Property Name="rcvd" Type="int" />
+          <Property Name="doa" Type="date" />
+        </EntityType>
+        <EntityType Name="courses_tbl">
+          <Key>
+            <PropertyRef Name="course" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="course" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="admfee" Type="int" />
+          <Property Name="fq_fee" Type="int" />
+          <Property Name="sq_fee" Type="int" />
+          <Property Name="tq_fee" Type="int" />
+          <Property Name="frthq_fee" Type="int" />
+        </EntityType>
+        <EntityType Name="login_tbl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="nvarchar" MaxLength="50" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="qut_tbl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rollno" Type="nvarchar" MaxLength="50" />
+          <Property Name="q_fee" Type="int" />
+          <Property Name="rcvd" Type="int" />
+          <Property Name="dor" Type="date" />
+        </EntityType>
+        <Association Name="FK__admission__cours__1BFD2C07">
+          <End Role="courses_tbl" Type="Self.courses_tbl" Multiplicity="0..1" />
+          <End Role="admission_tbl" Type="Self.admission_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="courses_tbl">
+              <PropertyRef Name="course" />
+            </Principal>
+            <Dependent Role="admission_tbl">
+              <PropertyRef Name="course" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__qut_tbl__rollno__1CF15040">
+          <End Role="admission_tbl" Type="Self.admission_tbl" Multiplicity="0..1" />
+          <End Role="qut_tbl" Type="Self.qut_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="admission_tbl">
+              <PropertyRef Name="rollno" />
+            </Principal>
+            <Dependent Role="qut_tbl">
+              <PropertyRef Name="rollno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="stud_dbModelStoreContainer">
+          <EntitySet Name="admission_tbl" EntityType="Self.admission_tbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="courses_tbl" EntityType="Self.courses_tbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="login_tbl" EntityType="Self.login_tbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="qut_tbl" EntityType="Self.qut_tbl" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__admission__cours__1BFD2C07" Association="Self.FK__admission__cours__1BFD2C07">
+            <End Role="courses_tbl" EntitySet="courses_tbl" />
+            <End Role="admission_tbl" EntitySet="admission_tbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__qut_tbl__rollno__1CF15040" Association="Self.FK__qut_tbl__rollno__1CF15040">
+            <End Role="admission_tbl" EntitySet="admission_tbl" />
+            <End Role="qut_tbl" EntitySet="qut_tbl" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="stud_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="admission_tbl">
+          <Key>
+            <PropertyRef Name="rollno" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rollno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="course" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="contactno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="admfee" Type="Int32" />
+          <Property Name="rcvd" Type="Int32" />
+          <Property Name="doa" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="courses_tbl" Relationship="Self.FK__admission__cours__0DAF0CB0" FromRole="admission_tbl" ToRole="courses_tbl" />
+          <NavigationProperty Name="qut_tbl" Relationship="Self.FK__qut_tbl__rollno__1367E606" FromRole="admission_tbl" ToRole="qut_tbl" />
+          <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="courses_tbl">
+          <Key>
+            <PropertyRef Name="course" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="course" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="admfee" Type="Int32" />
+          <Property Name="fq_fee" Type="Int32" />
+          <Property Name="sq_fee" Type="Int32" />
+          <Property Name="tq_fee" Type="Int32" />
+          <Property Name="frthq_fee" Type="Int32" />
+          <NavigationProperty Name="admission_tbl" Relationship="Self.FK__admission__cours__0DAF0CB0" FromRole="courses_tbl" ToRole="admission_tbl" />
+        </EntityType>
+        <EntityType Name="login_tbl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="qut_tbl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rollno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="q_fee" Type="Int32" />
+          <Property Name="rcvd" Type="Int32" />
+          <Property Name="dor" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="admission_tbl" Relationship="Self.FK__qut_tbl__rollno__1367E606" FromRole="qut_tbl" ToRole="admission_tbl" />
+        </EntityType>
+        <Association Name="FK__admission__cours__0DAF0CB0">
+          <End Role="courses_tbl" Type="Self.courses_tbl" Multiplicity="0..1" />
+          <End Role="admission_tbl" Type="Self.admission_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="courses_tbl">
+              <PropertyRef Name="course" />
+            </Principal>
+            <Dependent Role="admission_tbl">
+              <PropertyRef Name="course" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__qut_tbl__rollno__1367E606">
+          <End Role="admission_tbl" Type="Self.admission_tbl" Multiplicity="0..1" />
+          <End Role="qut_tbl" Type="Self.qut_tbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="admission_tbl">
+              <PropertyRef Name="rollno" />
+            </Principal>
+            <Dependent Role="qut_tbl">
+              <PropertyRef Name="rollno" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DbModels" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="admission_tbl" EntityType="Self.admission_tbl" />
+          <EntitySet Name="courses_tbl" EntityType="Self.courses_tbl" />
+          <EntitySet Name="login_tbl" EntityType="Self.login_tbl" />
+          <EntitySet Name="qut_tbl" EntityType="Self.qut_tbl" />
+          <AssociationSet Name="FK__admission__cours__0DAF0CB0" Association="Self.FK__admission__cours__0DAF0CB0">
+            <End Role="courses_tbl" EntitySet="courses_tbl" />
+            <End Role="admission_tbl" EntitySet="admission_tbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK__qut_tbl__rollno__1367E606" Association="Self.FK__qut_tbl__rollno__1367E606">
+            <End Role="admission_tbl" EntitySet="admission_tbl" />
+            <End Role="qut_tbl" EntitySet="qut_tbl" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="stud_dbModelStoreContainer" CdmEntityContainer="DbModels">
+          <EntitySetMapping Name="admission_tbl">
+            <EntityTypeMapping TypeName="stud_dbModel.admission_tbl">
+              <MappingFragment StoreEntitySet="admission_tbl">
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="rollno" ColumnName="rollno" />
+                <ScalarProperty Name="course" ColumnName="course" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="fname" ColumnName="fname" />
+                <ScalarProperty Name="contactno" ColumnName="contactno" />
+                <ScalarProperty Name="admfee" ColumnName="admfee" />
+                <ScalarProperty Name="rcvd" ColumnName="rcvd" />
+                <ScalarProperty Name="doa" ColumnName="doa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="courses_tbl">
+            <EntityTypeMapping TypeName="stud_dbModel.courses_tbl">
+              <MappingFragment StoreEntitySet="courses_tbl">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="course" ColumnName="course" />
+                <ScalarProperty Name="admfee" ColumnName="admfee" />
+                <ScalarProperty Name="fq_fee" ColumnName="fq_fee" />
+                <ScalarProperty Name="sq_fee" ColumnName="sq_fee" />
+                <ScalarProperty Name="tq_fee" ColumnName="tq_fee" />
+                <ScalarProperty Name="frthq_fee" ColumnName="frthq_fee" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="login_tbl">
+            <EntityTypeMapping TypeName="stud_dbModel.login_tbl">
+              <MappingFragment StoreEntitySet="login_tbl">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="qut_tbl">
+            <EntityTypeMapping TypeName="stud_dbModel.qut_tbl">
+              <MappingFragment StoreEntitySet="qut_tbl">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="rollno" ColumnName="rollno" />
+                <ScalarProperty Name="q_fee" ColumnName="q_fee" />
+                <ScalarProperty Name="rcvd" ColumnName="rcvd" />
+                <ScalarProperty Name="dor" ColumnName="dor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

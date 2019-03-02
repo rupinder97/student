@@ -1,0 +1,52 @@
+﻿@model student.Models.qut_tbl
+
+@{
+    ViewBag.Title = "Details";
+}
+<div class="container">
+<div class="col-lg-10">
+    <h2>Details</h2>
+
+    <div>
+        <h4>qut_tbl</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.q_fee)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.q_fee)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.rcvd)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.rcvd)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.dor)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.dor)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.admission_tbl.course)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.admission_tbl.course)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+    </div></div>

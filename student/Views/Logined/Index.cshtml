@@ -1,0 +1,63 @@
+﻿@model student.Models.login_tbl
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body style="background-color:antiquewhite">
+    <br /><br /><br />
+    <div class="container" align="center">
+        <h1>Welcome to Student Admin Panel</h1>
+        <div class="col-md-3"></div>
+        <div class="col-md-6" align="center">
+            <h2>User Login</h2>
+
+
+            @using (Html.BeginForm("Index", "Logined", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <div class="col-md-3">Admin Name</div>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-3">Password</div>
+                        <div class="col-md-10">
+                            @Html.PasswordFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group"><br />
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Submit" class="btn btn-default" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <label class="label-success">@ViewBag.SuccessMessage</label>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>
